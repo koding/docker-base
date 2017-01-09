@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get update && \
     apt-get --yes --quiet=2 install \
             bc htop build-essential curl wget unzip git-core \
-            nodejs npm nginx mongodb-clients postgresql-client redis-tools \
+            nginx mongodb-clients postgresql-client redis-tools \
             graphicsmagick python-pip rlwrap \
             libev-dev libev4 libnotify-bin libxml2-dev libssl-dev \
             libgif-dev libjpeg-dev libcairo2-dev
@@ -21,20 +21,20 @@ RUN curl --silent $GO_DIST_URL | \
     tar --extract --gzip --directory /usr/local && \
     ln -s /usr/local/go/bin/* /usr/local/bin
 
-ENV NODE_VERSION="v0.10.33"
-ENV NODE_NAME="node-$NODE_VERSION"
-ENV NODE_TARBALL="$NODE_NAME.tar.gz"
-ENV NODE_DIST_URL="https://nodejs.org/download/release/$NODE_VERSION/$NODE_TARBALL"
+ENV NODE_VERSION="v6.9.4"
+ENV NODE_NAME="node-$NODE_VERSION-linux-x64"
+ENV NODE_TARBALL="$NODE_NAME.tar.xz"
+ENV NODE_DIST_URL="https://nodejs.org/dist/$NODE_VERSION/$NODE_TARBALL"
 
-RUN curl --silent $NODE_DIST_URL | \
-    tar --extract --gzip --directory /usr/local/src/ && \
-    cd /usr/local/src/$NODE_NAME && \
-    ./configure && \
-    make && \
-    make install && \
-    rm -rf /usr/local/src/$NODE_NAME
+RUN curl --silent --location $NODE_DIST_URL | \
+    tar --extract --xz --strip-components=1 \
+        --directory /usr/local/ \
+        $NODE_NAME/bin \
+        $NODE_NAME/include \
+        $NODE_NAME/lib \
+        $NODE_NAME/share
 
-ENV NPM_VERSION="2.*" \
+ENV NPM_VERSION="4.*" \
     COFFEE_SCRIPT_VERSION="1.8.0"
 
 RUN npm install --global npm@$NPM_VERSION
