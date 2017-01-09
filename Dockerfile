@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get update && \
     apt-get --yes --quiet=2 install \
             bc htop build-essential curl wget unzip git-core \
-            nodejs npm nginx mongodb-clients postgresql-client redis-tools \
+            nginx mongodb-clients postgresql-client redis-tools \
             graphicsmagick python-pip rlwrap \
             libev-dev libev4 libnotify-bin libxml2-dev libssl-dev \
             libgif-dev libjpeg-dev libcairo2-dev
