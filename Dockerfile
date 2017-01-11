@@ -35,7 +35,7 @@ RUN curl --silent --location $NODE_DIST_URL | \
         $NODE_NAME/share
 
 ENV NPM_VERSION="4.*" \
-    COFFEE_SCRIPT_VERSION="1.8.0"
+    COFFEE_SCRIPT_VERSION="1.12"
 
 RUN npm install --global npm@$NPM_VERSION
 
