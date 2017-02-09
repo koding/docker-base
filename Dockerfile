@@ -44,3 +44,7 @@ RUN npm install --global \
         gulp
 
 RUN pip install supervisor
+
+RUN curl --silent --location --output /usr/local/bin/jq \
+         https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && \
+    chmod +x /usr/local/bin/jq
