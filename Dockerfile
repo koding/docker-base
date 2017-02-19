@@ -6,11 +6,13 @@ RUN apt-get update && \
     add-apt-repository --yes ppa:nginx/stable && \
     apt-get update && \
     apt-get --yes --quiet=2 install \
-            bc htop build-essential curl wget unzip git-core \
+            bc htop build-essential curl wget unzip git-core dnsmasq \
             nginx mongodb-clients postgresql-client redis-tools \
             graphicsmagick python-pip rlwrap \
             libev-dev libev4 libnotify-bin libxml2-dev libssl-dev \
             libgif-dev libjpeg-dev libcairo2-dev
+
+COPY etc/dnsmasq.conf /etc/
 
 ENV GO_VERSION="1.7.1"
 ENV GO_NAME="go${GO_VERSION}"
