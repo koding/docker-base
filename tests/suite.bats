@@ -81,7 +81,7 @@ load test_helper
 @test "go run OK (with correct version)" {
 	run koding-base /usr/local/bin/go version
 	[[ $status -eq 0 ]]
-	[[ $output =~ 1.7.1 ]]
+	[[ $output =~ 1.8 ]]
 }
 
 @test "jq run OK (with correct version)" {
