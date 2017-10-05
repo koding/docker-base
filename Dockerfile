@@ -12,7 +12,7 @@ RUN apt-get update && \
             libev-dev libev4 libnotify-bin libxml2-dev libssl-dev \
             libgif-dev libjpeg-dev libcairo2-dev
 
-ENV GO_VERSION="1.8"
+ENV GO_VERSION="1.9.1"
 ENV GO_NAME="go${GO_VERSION}"
 ENV GO_TARBALL="${GO_NAME}.linux-amd64.tar.gz"
 ENV GO_DIST_URL="https://storage.googleapis.com/golang/${GO_TARBALL}"
